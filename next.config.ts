@@ -3,9 +3,11 @@ import type { NextConfig } from "next";
 import createMDX from '@next/mdx';
 
 const nextConfig: NextConfig = {
-  pageExtensions: ['md', 'mdx', 'tsx']
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx']
 };
 
-const withMDX = createMDX({});
+const withMDX = createMDX({
+  extension: /\.mdx?$/
+});
 
 export default withMDX(nextConfig);

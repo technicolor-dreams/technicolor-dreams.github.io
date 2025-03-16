@@ -13,7 +13,7 @@ export const getPostFilePaths = () => {
 export const getMdxContent = async (slug: string) => {
     const filePath = path.join(process.cwd(), 'content', `${slug}.mdx`);
     const res = fs.readFileSync(filePath, 'utf-8');
-    const { content, frontmatter: metadata } = await compileMDX<{ title: string, description: string }>({
+    const { content, frontmatter: metadata } = await compileMDX<{ title: string, date: string, description: string }>({
         source: res,
         options: { parseFrontmatter: true },
     });

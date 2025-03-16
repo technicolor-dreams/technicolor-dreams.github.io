@@ -19,6 +19,18 @@ export async function generateStaticParams() {
 // Your dynamic page component
 export default async function Page(pageProps: PageProps) {
     const { slug } = await pageProps.params;
-    const { content } = await getMdxContent(slug);
-    return content;
+    const { content, metadata: { title, date } } = await getMdxContent(slug);
+    return (
+        <>
+            <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+            }}>
+                <h1>{title}</h1>
+                <div>{date}</div>
+            </div>
+            {content}
+        </>
+    );
 }
